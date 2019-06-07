@@ -5,21 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <style>
-        label {
-            display: block;
-            margin: 15px;
-            padding: 5px;
-        }
-    </style>
 
 </head>
 <body>
+    @model Survey.Models.SurveyInfo
     <div>
-        <p> Name: @ViewBag.Name</p>
-        <p> Dojo: @ViewBag.Location</p>
-        <p> Language: @ViewBag.Language</p>
-        <p> Comment: @ViewBag.Comment</p>
+        <p> Name: @Model.Name</p>
+        <p> Dojo: @Model.Location</p>
+        <p> Language: @Model.Language</p>
+        <p> Comment: @Model.Comment</p>
     </div>
 </body>
 </html>

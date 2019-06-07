@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Survey.Models;
 
 namespace Survey.Controllers     //be sure to use your own project's namespace!
 {
@@ -11,27 +12,19 @@ namespace Survey.Controllers     //be sure to use your own project's namespace!
         {
             return View();
         }
+
         [HttpPost]
         [Route("method")]
-        public RedirectToActionResult Method(string Name, string Location, string Language, string Comment)
+        public RedirectToActionResult Method(SurveyInfo survey)
         {
-            var myobject = new {
-                name = Name,
-                location = Location,
-                language = Language,
-                comment = Comment
-            };
-            return RedirectToAction("Result", myobject);
+            return RedirectToAction("Result", survey);
         }
+
         [HttpGet]       //type of request
         [Route("result")]     //associated route string (exclude the leading /)
-        public ViewResult Result(string Name, string Location, string Language, string Comment)
+        public IActionResult Result(SurveyInfo survey)
         {
-            ViewBag.Name = Name;
-            ViewBag.Location = Location;
-            ViewBag.Language = Language;
-            ViewBag.Comment = Comment;
-            return View();
+            return View(survey);
         }
     }
 }
